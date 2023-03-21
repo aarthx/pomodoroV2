@@ -57,7 +57,7 @@ const Home = () => {
         }
         return segundo - 1;
       });
-    }, 1);
+    }, 1000);
   }
 
   function pausarTempo() {
