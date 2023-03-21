@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
+
+:root {
+  --font-primary: 'Comfortaa', cursive;
+  --color-dark-pink: #DD514F;
+  --color-regular-pink: #CE7777;
+  --color-light-pink: #E8C4C4;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-primary);
+  background-color: var(--color-regular-pink);
+  color: #000;
+}
+
+h1,h2,h3 {
+  padding: 0;
+  margin: 0;
+}
+
+ul,li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+p{
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  /* A forma que encontrei de manter o footer embaixo foi usando a unidade dvh */
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
