@@ -24,11 +24,12 @@ const Home = () => {
     if (segundo === 59) {
       setMinuto((minuto) => minuto - 1);
     }
-    if (minuto === 0 && segundo === 0) {
+    document.title = `${minuto >= 10 ? minuto : `0${minuto}`}:${segundo >= 10 ? segundo : `0${segundo}`}`
+    if (segundo === 0 && minuto === 0) {
       pausarTempo();
       alarme.play();
     }
-    if (minuto === 0 && segundo === 0 && situation === 'Focus') {
+    if (segundo === 0 && minuto === 0 && situation === 'Focus') {
       setTomatos((tomatos) => tomatos + 1);
       if (tomatos < 3) {
         setSituation('Short Break');
@@ -38,11 +39,11 @@ const Home = () => {
         setMinuto(longBreak);
       }
     }
-    if (minuto === 0 && segundo === 0 && situation === 'Short Break') {
+    if (segundo === 0 && minuto === 0 && situation === 'Short Break') {
       setSituation('Focus');
       setMinuto(focus);
     }
-    if (minuto === 0 && segundo === 0 && situation === 'Long Break') {
+    if (segundo === 0 && minuto === 0 && situation === 'Long Break') {
       alert('PARABÉNS! Você concluiu os 4 ciclos pomodoros!');
       resetar();
     }

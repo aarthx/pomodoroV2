@@ -13,6 +13,7 @@ body {
   font-family: var(--font-primary);
   background-color: var(--color-regular-pink);
   color: #000;
+  user-select: none;
 }
 
 h1,h2,h3 {
