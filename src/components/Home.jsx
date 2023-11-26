@@ -21,15 +21,22 @@ const Home = () => {
   }, []);
 
   React.useEffect(() => {
-    if (segundo === 59) {
-      setMinuto((minuto) => minuto - 1);
+    if(segundo < 0) {
+      let minutosPassados = Math.ceil(segundo/-60)
+      if(minuto - minutosPassados < 0) {
+        setSegundo(0)
+        setMinuto(0)
+      } else {
+        setSegundo(segundo => segundo + (60 * minutosPassados))
+        setMinuto(minuto => minuto - minutosPassados)
+      }
     }
     document.title = `${minuto >= 10 ? minuto : `0${minuto}`}:${segundo >= 10 ? segundo : `0${segundo}`}`
-    if (segundo === 0 && minuto === 0) {
+    if (segundo <= 0 && minuto <= 0) {
       pausarTempo();
       alarme.play();
     }
-    if (segundo === 0 && minuto === 0 && situation === 'Focus') {
+    if (segundo <= 0 && minuto <= 0 && situation === 'Focus') {
       setTomatos((tomatos) => tomatos + 1);
       if (tomatos < 3) {
         setSituation('Short Break');
@@ -39,25 +46,35 @@ const Home = () => {
         setMinuto(longBreak);
       }
     }
-    if (segundo === 0 && minuto === 0 && situation === 'Short Break') {
+    if (segundo <= 0 && minuto <= 0 && situation === 'Short Break') {
       setSituation('Focus');
       setMinuto(focus);
     }
-    if (segundo === 0 && minuto === 0 && situation === 'Long Break') {
+    if (segundo <= 0 && minuto <= 0 && situation === 'Long Break') {
       alert('PARABÉNS! Você concluiu os 4 ciclos pomodoros!');
       resetar();
     }
   }, [segundo]);
-
+  let testeTempo
+  let testeTempo2
+  let intervaloContabilizado
   function iniciaTempo() {
     setLigado(true);
     intervalRef.current = setInterval(() => {
+      testeTempo2 = Date.now()
+      intervaloContabilizado = ((testeTempo2 - testeTempo)/1000).toFixed(0)
       setSegundo((segundo) => {
+        if(intervaloContabilizado >= 2) {
+          console.log(`Houve um atraso de: ${intervaloContabilizado} segundos que já considerado`)
+          return segundo - intervaloContabilizado
+        }
         if (segundo === 0) {
+          setMinuto(min => min - 1)
           return 59;
         }
         return segundo - 1;
       });
+      testeTempo = Date.now()
     }, 1000);
   }
 
