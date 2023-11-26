@@ -51,6 +51,7 @@ const Home = () => {
       setMinuto(focus);
     }
     if (segundo <= 0 && minuto <= 0 && situation === 'Long Break') {
+      alarme.play();
       alert('PARABÉNS! Você concluiu os 4 ciclos pomodoros!');
       resetar();
     }
@@ -64,10 +65,6 @@ const Home = () => {
       testeTempo2 = Date.now()
       intervaloContabilizado = ((testeTempo2 - testeTempo)/1000).toFixed(0)
       setSegundo((segundo) => {
-        if(intervaloContabilizado >= 2) {
-          console.log(`Houve um atraso de: ${intervaloContabilizado} segundos que já considerado`)
-          return segundo - intervaloContabilizado
-        }
         if (segundo === 0) {
           setMinuto(min => min - 1)
           return 59;
