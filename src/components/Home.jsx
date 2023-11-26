@@ -151,7 +151,7 @@ const Home = () => {
             <p>
               <span
                 onClick={() => {
-                  if (focus > 15) setFocus(focus - 1);
+                  if (focus > 10) setFocus(focus - 1);
                 }}
               >
                 -
@@ -159,7 +159,7 @@ const Home = () => {
               {focus}
               <span
                 onClick={() => {
-                  if (focus < 30) setFocus(focus + 1);
+                  if (focus < 60) setFocus(focus + 1);
                 }}
               >
                 +
@@ -171,7 +171,7 @@ const Home = () => {
             <p>
               <span
                 onClick={() => {
-                  if (shortBreak > 3) setShortBreak(shortBreak - 1);
+                  if (shortBreak > 1) setShortBreak(shortBreak - 1);
                 }}
               >
                 -
@@ -179,7 +179,7 @@ const Home = () => {
               {shortBreak}
               <span
                 onClick={() => {
-                  if (shortBreak < 10) setShortBreak(shortBreak + 1);
+                  if (shortBreak < 30) setShortBreak(shortBreak + 1);
                 }}
               >
                 +
@@ -191,7 +191,7 @@ const Home = () => {
             <p>
               <span
                 onClick={() => {
-                  if (longBreak > 10) setLongBreak(longBreak - 1);
+                  if (longBreak > 1) setLongBreak(longBreak - 1);
                 }}
               >
                 -
@@ -199,7 +199,7 @@ const Home = () => {
               {longBreak}
               <span
                 onClick={() => {
-                  if (longBreak < 20) setLongBreak(longBreak + 1);
+                  if (longBreak < 30) setLongBreak(longBreak + 1);
                 }}
               >
                 +
