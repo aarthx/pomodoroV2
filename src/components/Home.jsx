@@ -65,6 +65,9 @@ const Home = () => {
       testeTempo2 = Date.now()
       intervaloContabilizado = ((testeTempo2 - testeTempo)/1000).toFixed(0)
       setSegundo((segundo) => {
+        if(intervaloContabilizado >= 2) {
+          return segundo - intervaloContabilizado
+        }
         if (segundo === 0) {
           setMinuto(min => min - 1)
           return 59;
